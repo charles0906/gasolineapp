@@ -1,6 +1,6 @@
 <div id="menu">
 	<ul>
-    <li><a href="#" class="active">Me</a></li>
-    <li><a href="#">Mi car</a></li>
+    <li><%= link_to "Me", profile_path, :class=>@state_me%></li>
+    <li><%= link_to "My Car", car_path, :class=>@state_car%></li>
     </ul>
 </div>

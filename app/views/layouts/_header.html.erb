@@ -1,7 +1,7 @@
 <div id="header">
 	<div id="logo"><%=link_to content_tag(:span, 'gasoline', :class=>"orange")+"APP",root_path %></div>
 	<% if user_signed_in? %>
-	   <div style="float:right; padding-right:240px;color:white;">Signed in as <%= current_user.email %> | 
+	   <div style="float:right; padding-right:240px;color:white;">Hello <%= current_user.name %> | 
 	  <%= link_to "Sign out", destroy_user_session_path %> </div>
 	  <%= render 'layouts/menu' %>
 	<% end %>
