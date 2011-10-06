@@ -1,4 +1,9 @@
 Gasolineapp::Application.routes.draw do
+  devise_for :users 
+  #get "users/index"
+  get "home/index"
+  root :to => "home#index"
+  resources :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
