@@ -1,15 +1,39 @@
-<div id="head_image">
- 	<div id="slogan"><strong>WELCOME</strong> </BR> </div>
-     <div id="under_slogan_text">
-	     This web application allows you to measure <br />
-	     fuel consumption of your car. It is very easy to use. <br />
-	     Register Now!<br />
-		 For continue, you most 
-	  </div>
-	<div id="slogan">
-		<strong  style="font-size:30px;"><%=link_to "SIGN IN", new_user_session_path %></strong> or 
-		<strong style="font-size:30px;"><%=link_to "SIGN UP", new_user_registration_path %></strong> </BR>  
-    </div>
+<h2>Today' Statistics</h2>
+<div style="border-size:1px; border-color: gray; border-style:solid;width:300px; padding:10px;">
+    <strong>Cheapest $/Gal: </strong><%="#{@cheapest_cost_gal.station}"%><br/>
+    <strong>Best KM/Gal: </strong><%="#{ @best_km_gallon.user.name} " %><br/>
+	<strong>Most Efficient Vehicle: </strong><%="#{ @most_vehil.user.car.make} #{ @most_vehil.user.car.model}" %>
 </div>
+<br/>
+<h3>Latest Entries:</h3>
+<div style="width:500px;margin:0px;padding:0px; ">
+	<table  style="border-size:1px; border-color: gray; border-style:solid;width:500px; padding:2px;">
+	  <tr>
+	    <th>Station</th>
+	    <th>Date p</th>
+	    <th>Kilometers</th>
+	    <th>Gallons</th>
+	    <th>Cost</th>
+	    <th>Cost gallon</th>
+	    <th>Km gallon</th>
+	  </tr>
+	<% @performances.each do |performance| %>   
+	  <tr>
+	    <td><%= performance.station %></td>
+	    <td><%= performance.date_p %></td>
+	    <td><%= performance.kilometers %></td>
+	    <td><%= performance.gallons %></td>
+	    <td><%= performance.cost %></td>
+	    <td><%= performance.cost_gallon %></td>
+	    <td><%= performance.km_gallon %></td>
+	  </tr>
+	<% end %>
+	</table>
+	<br />
+</div>	
+
+
+
+
 
 	
