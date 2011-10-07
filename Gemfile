@@ -9,6 +9,7 @@ end
 gem 'bcrypt-ruby' ,'2.1.3'
 gem 'warden', '1.0.3'
 gem 'devise' ,'1.1.5'
+gem 'paperclip','2.4.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
