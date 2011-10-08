@@ -1,8 +1,8 @@
 <h2>Today' Statistics</h2>
 <div style="border-size:1px; border-color: gray; border-style:solid;width:300px; padding:10px;">
-    <strong>Cheapest $/Gal: </strong><%="#{@cheapest_cost_gal.station}"%><br/>
-    <strong>Best KM/Gal: </strong><%="#{ @best_km_gallon.user.name} " %><br/>
-	<strong>Most Efficient Vehicle: </strong><%="#{ @most_vehil.user.car.make} #{ @most_vehil.user.car.model}" %>
+    <strong>Cheapest $/Gal: </strong><%=link_to "#{@cheapest_cost_gal.station}", station_path(@cheapest_cost_gal.station)%><br/>
+    <strong>Best KM/Gal: </strong><%=link_to "#{ @best_km_gallon.user.name} ",user_path(@best_km_gallon.user.id) %><br/>
+	<strong>Most Efficient Vehicle: </strong><%=link_to "#{ @most_vehil.user.car.make} #{ @most_vehil.user.car.model}",car_info_path(@most_vehil.user.id) %>
 </div>
 <br/>
 <h3>Latest Entries:</h3>
@@ -31,9 +31,3 @@
 	</table>
 	<br />
 </div>	
-
-
-
-
-
-	
