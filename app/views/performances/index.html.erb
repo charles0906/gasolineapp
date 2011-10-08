@@ -1,0 +1,35 @@
+<h1>Listing performances</h1>
+
+<table>
+  <tr>
+    <th>Station</th>
+    <th>Date p</th>
+    <th>Kilometers</th>
+    <th>Gallons</th>
+    <th>Cost</th>
+    <th>Cost gallon</th>
+    <th>Km gallon</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @performances.each do |performance| %>
+  <tr>
+    <td><%= performance.station %></td>
+    <td><%= performance.date_p %></td>
+    <td><%= performance.kilometers %></td>
+    <td><%= performance.gallons %></td>
+    <td><%= performance.cost %></td>
+    <td><%= performance.cost_gallon %></td>
+    <td><%= performance.km_gallon %></td>
+    <td><%= link_to 'Show', performance %></td>
+    <td><%= link_to 'Edit', edit_performance_path(performance) %></td>
+    <td><%= link_to 'Destroy', performance, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Performance', new_performance_path %>

@@ -1,0 +1,43 @@
+<h2>My Car</h2>
+<table>
+	<tr>
+	  <td rowspan="3" valign="top">
+       <%# image_tag "RenaultSymbol.jpg", :size=>"300x200"%>
+	<%= image_tag @car.photo.url(:medium) %>
+	 </td>
+   </tr>
+	<tr>
+	  <td valign="top">
+		<div style="border-size:1px; border-color: gray; border-style:solid;width:250px; padding:10px; margin-left:20px;">
+		  <strong>Make: </strong><%= "#{@car.make}" %> 
+		  <span style="float:right;"><%= link_to "Update Info" ,edit_car_path%></span></br>   
+	      <strong>Model: </strong><%= "#{@car.model}" %></br>
+     	  <strong>Odometer: </strong><%= "#{@car.odometer}" %> Kilometers</br>
+		<div>	
+	  </td>
+	</tr>
+	<tr>
+	  <td valign="top">
+		<br/>
+	 <h3 style="padding-left:20px;">Latest performance</h3>
+	 <div style="border-size:1px; border-color: gray; border-style:solid;width:250px; padding:10px; margin-left:20px;">
+		<table>
+		  <tr>
+		    <th>Date</th>
+		    <th>Kilometers</th>
+		    <th>Gallons</th>
+		    <th>Km/gallon</th>
+		  </tr>
+		<% @performances.each do |performance| %>
+		  <tr>
+		    <td><%= performance.date_p %></td>
+		    <td><%= performance.kilometers %></td>
+		    <td><%= performance.gallons %></td>
+		    <td><%= performance.km_gallon %></td>
+		  </tr>
+		<% end %>
+		</table>
+	  </div>
+	 </td>
+   </tr>
+</table>

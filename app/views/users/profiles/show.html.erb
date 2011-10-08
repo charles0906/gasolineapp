@@ -1,0 +1,51 @@
+<h2>Your Statistics</h2>
+<table>
+	<tr>
+	 <td
+      <div id='graphic_averige_km_gallon'>
+	   </div>	
+	 </td>
+	 <td
+	   <div id='graphic_averige_cost_gallon'>	   
+	   </div>
+	  <%= render_chart(@graphic_averige_cost_gallon , 'graphic_averige_cost_gallon') %>
+	  <%= render_chart(@graphic_averige_km_gallon , 'graphic_averige_km_gallon') %>
+	</td>
+	</tr>
+</table>
+<div style="border-size:1px; border-color: gray; border-style:solid;width:300px; padding:10px;">
+    <strong>Average $/Gal: </strong><%="#{@averige_cost_gallon} " %><br/>
+    <strong>Average KM/Gal: </strong><%="#{@averige_km_gallon} " %><br/>
+	<strong>Your Vehicle: </strong><%=link_to "#{@user.car.make} #{@user.car.model} ",car_path %>
+</div>
+<br/>
+<h3>Your Latest Entries:</h3>
+<div style="width:500px;margin:0px;padding:0px; ">
+	<span style="float:right;" ><%= link_to 'New Performance', new_performance_path %></span><br/>
+	<table  style="border-size:1px; border-color: gray; border-style:solid;width:500px; padding:2px;">
+	  <tr>
+	    <th>Station</th>
+	    <th>Date p</th>
+	    <th>Kilometers</th>
+	    <th>Gallons</th>
+	    <th>Cost</th>
+	    <th>Cost gallon</th>
+	    <th>Km gallon</th>
+	  </tr>
+	<% @performances.each do |performance| %>
+	  <tr>
+	    <td><%= performance.station %></td>
+	    <td><%= performance.date_p %></td>
+	    <td><%= performance.kilometers %></td>
+	    <td><%= performance.gallons %></td>
+	    <td><%= performance.cost %></td>
+	    <td><%= performance.cost_gallon %></td>
+	    <td><%= performance.km_gallon %></td>
+	  </tr>
+	<% end %>
+	</table>
+	<br />
+</div>	
+
+
+
