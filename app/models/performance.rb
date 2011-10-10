@@ -9,7 +9,7 @@ class Performance < ActiveRecord::Base
   validate :my_current_day
   
   STATIONS= %w{Petromil Movil Texaco Esso}
-   before_create :calculateOverages, :formatNumbers
+   before_create :calculateOverages
    
    private
    def calculateOverages

@@ -10,6 +10,7 @@ gem 'bcrypt-ruby' ,'2.1.3'
 gem 'warden', '1.0.3'
 gem 'devise' ,'1.1.5'
 gem 'paperclip','2.4.3'
+gem 'kaminari','0.12.4'
 #gem 'scruffy','0.2.6'
 #gem "gruff", "~> 0.3.6"
 #gem "rmagick", "~> 2.13.1"

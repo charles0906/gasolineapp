@@ -5,7 +5,7 @@
 		<div style="border-size:1px; border-color: gray; border-style:solid;width:300px; padding:10px;">
 		    <strong>Car Make: </strong><%="#{@performances.first.user.car.make}"%><br/>
 		    <strong>Car Model: </strong><%="#{@performances.first.user.car.model}"%><br/>
-			<strong>Average KM/Gal: </strong><%="#{@performances.average(:km_gallon)}"%> Kilometers
+			<strong>Average KM/Gal: </strong><%="#{@performances.average(:km_gallon).round(3)}" if @performances.size>0%> Kilometers
 		</div>
 	 </td>	
 	  <td style="padding-left:50px;">
@@ -40,5 +40,6 @@
 	  </tr>
 	<% end %>
 	</table>
+				<%= paginate @performances %>
 	<br />
 </div>

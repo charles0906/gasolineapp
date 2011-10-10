@@ -5,7 +5,7 @@
 		<div style="border-size:1px; border-color: gray; border-style:solid;width:300px; padding:10px;">
 		    <strong>Car Make: </strong><%="#{@performances.first.user.car.make}"%><br/>
 		    <strong>Car Model: </strong><%=link_to "#{@performances.first.user.car.model}", car_info_path(@performances.first.user.id)%><br/>
-			<strong>Odometer: </strong><%=@performances.first.user.car.odometer+@performances.sum(:kilometers)%> Kilometers<br/>
+			<strong>Odometer: </strong><%=@performances.first.user.car.odometer%> Kilometers<br/>
 			<strong>Average KM/Gal: </strong><%="#{(@performances.average(:km_gallon)).round(3)}"%> Kilometers
 		</div>
 	 </td>	
@@ -39,5 +39,6 @@
 	  </tr>
 	<% end %>
 	</table>
+				<%= paginate @performances %>
 	<br />
 </div>

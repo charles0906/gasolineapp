@@ -4,9 +4,9 @@ class HomeController < ApplicationController
     if user_signed_in?
       redirect_to profile_path
     else
-      @performances = Performance.last(10)
+      @performances = Performance.order(:id).page(params[:page]).per(5)
       @cheapest_cost_gal = Performance.first(:conditions => {:cost_gallon => Performance.minimum(:cost_gallon)})
-      @best_km_gallon = Performance.first(:conditions => {:km_gallon => Performance.maximum(:km_gallon)})
+      @best_km_gallon = Performance.first(:conditions => {:km_gallon => Performance.maximum(:km_gallon)}) 
       most_vehil_performances =  Performance.all
       @most_vehil = most_vehil_performances.first
       most_vehil_performances.each do |performance|

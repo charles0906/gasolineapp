@@ -3,7 +3,7 @@ class PerformancesController < ApplicationController
 
   def index
     if params[:station]
-      @performances = Performance.where( :station=> params[:station].to_s)
+      @performances = Performance.where( :station=> params[:station].to_s).page(params[:page]).per(5)
       @performances_by_user = Performance.where( :station=> params[:station].to_s).group(:user_id)
       myhash= @performances_by_user.size
       users=Array.new
@@ -15,10 +15,10 @@ class PerformancesController < ApplicationController
       graphic_averiges_cost
       render "station"
     elsif params[:user]
-      @performances = Performance.where(:user_id=> params[:user])
+      @performances = Performance.where(:user_id=> params[:user]).page(params[:page]).per(5)
       render "user"
     elsif params[:car]
-      @performances = Performance.where(:user_id=> params[:car])
+      @performances = Performance.where(:user_id=> params[:car]).page(params[:page]).per(5)
       graphic_averiges_km
       render "car"
     end
@@ -32,6 +32,7 @@ class PerformancesController < ApplicationController
   def create
     @performance = current_user.performances.new(params[:performance])
     if @performance.save
+       @performance.user.car.update_attributes(:odometer=>@performance.user.car.odometer+@performance.kilometers)
       redirect_to profile_path
     else
       render "new"
