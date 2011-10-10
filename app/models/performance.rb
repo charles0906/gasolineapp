@@ -5,13 +5,11 @@ class Performance < ActiveRecord::Base
   validates :station, :presence => true
   validates :kilometers, :presence => true, :numericality =>true
   validates :gallons, :presence => true , :numericality =>true 
-  validates :cost, :presence => true, :numericality => {:only_float => true}
+  validates :cost, :presence => true, :numericality => true
   validate :my_current_day
   
   STATIONS= %w{Petromil Movil Texaco Esso}
-  #validates :cost_gallon, :presence => true
-  #validates :km_gallon, :presence => true
-   before_create :calculateOverages
+   before_create :calculateOverages, :formatNumbers
    
    private
    def calculateOverages
@@ -23,5 +21,4 @@ class Performance < ActiveRecord::Base
        errors.add(:date_p, "can't be in the future")
      end
    end
-
 end

@@ -3,9 +3,9 @@ before_filter :authenticate_user!
   def show
       @user=current_user
       @state_me="active"
-      @performances = current_user.performances.last(5)
-      @averige_cost_gallon =  current_user.performances.sum(:cost_gallon)/@performances.size
-      @averige_km_gallon =  current_user.performances.sum(:km_gallon)/@performances.size
+      @performances = current_user.performances
+      @averige_cost_gallon =  (current_user.performances.average(:cost_gallon)).round(3) unless current_user.performances.empty?
+      @averige_km_gallon =  (current_user.performances.average(:km_gallon)).round(3) unless current_user.performances.empty?
       graphic_averiges
   end
   
